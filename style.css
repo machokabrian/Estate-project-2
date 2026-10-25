@@ -168,7 +168,7 @@ section{scroll-margin-top:70px}
 .cookie a,footer a{color:#e0a84a}
 .cookie .btn{padding:8px 16px}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-@media(max-width:560px){.amen{grid-template-columns:1fr}.cookie{right:12px;bottom:90px}.mi{padding:18px 16px 24px}}
+@media(max-width:560px){.amen{grid-template-columns:1fr}.cookie{right:84px;bottom:12px}.mi{padding:18px 16px 24px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
 /* ===== Status, forms, team, reviews ===== */
@@ -200,3 +200,11 @@ section{scroll-margin-top:70px}
 .cookie .btn.outline{border-color:#eadfd5;color:#eadfd5}
 .cookie .btn.outline:hover{background:#eadfd5;color:#1c1411}
 @media(max-width:560px){.lf .two{grid-template-columns:1fr}}
+
+/* ===== Floating buttons, link-style buttons ===== */
+a.btn{text-decoration:none;display:inline-block;text-align:center}
+.chatfab{position:fixed;right:23px;bottom:90px;width:52px;height:52px;border-radius:50%;border:0;background:#1c1411;color:#fff;font-size:22px;cursor:pointer;z-index:20;box-shadow:0 8px 24px #0005;transition:.2s}
+.chatfab:hover{transform:scale(1.1)}
+.chat{bottom:152px}
+
+.wafab,.chatfab{z-index:26}
