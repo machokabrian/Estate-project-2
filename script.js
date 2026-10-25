@@ -66,9 +66,16 @@ function render(){
   }).join("");
 }
 
+// --- WhatsApp helpers ---
+const waNumber = n => { n = String(n).replace(/\D/g, ""); return n.startsWith("0") ? "254" + n.slice(1) : n; };
+const waUrl = (text, number = WHATSAPP) => `https://wa.me/${waNumber(number)}?text=${encodeURIComponent(text)}`;
+// Link to a listing, included in messages so the agent sees exactly which property it is
+const listingUrl = p => ((location.protocol === "http:" || location.protocol === "https:") ? location.origin + location.pathname : CONFIG.siteUrl + "/") + "#listing-" + p.id;
 const wa = (text, source = "site", number = WHATSAPP) => {
   track("whatsapp_click", {source});
-  window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`, "_blank");
+  const url = waUrl(text, number);
+  const w = window.open(url, "_blank");
+  if (w) w.opener = null; else location.href = url;     // popup blocked or in-app browser: open in this tab instead
 };
 
 // Grid clicks (favourite / details / enquire)
@@ -76,7 +83,7 @@ $("grid").addEventListener("click", e => {
   const f = e.target.closest("[data-fav]"), q = e.target.closest("[data-enq]"), v = e.target.closest("[data-view]");
   if (v && !f && !q) return openListing(+v.dataset.view);
   if (f){ const id=+f.dataset.fav; favs = favs.includes(id)?favs.filter(x=>x!==id):[...favs,id]; saveFavs(); render(); }
-  if (q){ const p = DATA.find(x=>x.id===+q.dataset.enq); wa(`Hello, I'm interested in "${p.title}" in ${p.loc} (${ksh(p.price)}).`, "card"); }
+  if (q){ const p = DATA.find(x=>x.id===+q.dataset.enq); wa(`Hello, I'm interested in "${p.title}" in ${p.loc} (${ksh(p.price)}).\n${listingUrl(p)}`, "card"); }
 });
 
 // Filters
@@ -129,11 +136,16 @@ addEventListener("scroll", onScroll); onScroll();
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
 document.querySelectorAll(".head,.cats,.toolbar,.about .container>*,.contact .container>*").forEach(el => { el.classList.add("rv"); io.observe(el); });
 
-// Floating WhatsApp button
+// Floating buttons: green = straight to WhatsApp, dark = property assistant
 const fab = document.createElement("a");
 document.querySelector("#cf .btn").insertAdjacentHTML("afterbegin", WAI);
 fab.className = "wafab"; fab.innerHTML = WAI; fab.setAttribute("aria-label","Chat on WhatsApp");
-fab.href = "#"; document.body.appendChild(fab);
+fab.href = waUrl(`Hello ${CONFIG.name}, I'd like to enquire about a property.`); fab.target = "_blank"; fab.rel = "noopener";
+fab.addEventListener("click", () => track("whatsapp_click", {source:"floating"}));
+document.body.appendChild(fab);
+const chatFab = document.createElement("button");
+chatFab.className = "chatfab"; chatFab.type = "button"; chatFab.textContent = "💬"; chatFab.setAttribute("aria-label","Open property assistant"); chatFab.title = "Property assistant";
+document.body.appendChild(chatFab);
 
 // ===== Smart property assistant (WhatsApp-style chat) =====
 const AI_ENDPOINT = ""; // optional: URL of YOUR server that calls an AI model; leave empty to use the built-in assistant
@@ -215,11 +227,11 @@ chQ.onclick = e => {
 chB.onclick = e => {
   const w = e.target.closest("[data-w]"), g = e.target.closest("[data-go]"), v = e.target.closest("[data-v]");
   if(v) return openListing(+v.dataset.v);
-  if(w){ const p = DATA.find(x => x.id === +w.dataset.w); wa(`Hello, I'm interested in "${p.title}" in ${p.loc} (${ksh(p.price)}). Is it still available?`, "chat"); }
+  if(w){ const p = DATA.find(x => x.id === +w.dataset.w); wa(`Hello, I'm interested in "${p.title}" in ${p.loc} (${ksh(p.price)}). Is it still available?\n${listingUrl(p)}`, "chat"); }
   if(g) wa(`Hello ${CONFIG.name}, I was chatting on your website.\n` + (seen.length ? `Listings I liked: ${seen.join(", ")}\n` : "") + (transcript.length ? `My messages: ${transcript.slice(-6).join(" | ")}` : ""), "chat");
 };
-fab.onclick = e => {
-  e.preventDefault(); chatEl.hidden = !chatEl.hidden;
+chatFab.onclick = () => {
+  chatEl.hidden = !chatEl.hidden;
   if(!chatEl.hidden && !chB.children.length) say(`Hello 👋 Welcome to ${esc(CONFIG.name)}. What are you looking for today?`, () => chips(START));
 };
 $("chX").onclick = () => { chatEl.hidden = true; };
