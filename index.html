@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#49352b">
+<title>Senator Kondo Properties | Find Your Perfect Property</title>
+<meta name="description" content="Buy, rent or invest in houses, apartments, land and commercial property across Kenya. Browse listings and enquire instantly on WhatsApp.">
+<link rel="canonical" href="https://www.yourdomain.co.ke/">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏡%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Senator Kondo Properties">
+<meta property="og:title" content="Senator Kondo Properties | Find Your Perfect Property">
+<meta property="og:description" content="Buy, rent or invest in houses, apartments, land and commercial property across Kenya. Browse listings and enquire instantly on WhatsApp.">
+<meta property="og:url" content="https://www.yourdomain.co.ke/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:locale" content="en_KE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Senator Kondo Properties | Find Your Perfect Property">
+<meta name="twitter:description" content="Buy, rent or invest in houses, apartments, land and commercial property across Kenya. Browse listings and enquire instantly on WhatsApp.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="container nav">
+  <a class="brand" href="#home">SENATOR KONDO<small>PROPERTIES &amp; REAL ESTATE</small></a>
+  <button id="menu" aria-label="Menu">☰</button>
+  <nav id="nav">
+    <a href="#categories">Categories</a><a href="#properties">Properties</a><a href="#about">About</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+    <button class="btn" id="listBtn">+ List Property</button>
+  </nav>
+</div></header>
+
+<main id="home">
+<section class="hero"><div class="container">
+  <h1>Find a Place You'll<br><em>Love to Call Home.</em></h1>
+  <p>Discover homes, apartments, land and investment opportunities across Kenya.</p>
+  <div class="search">
+    <div class="tabs">
+      <button class="tab on" data-p="">All</button><button class="tab" data-p="Sale">Buy</button><button class="tab" data-p="Rent">Rent</button>
+    </div>
+    <form class="sform" id="heroForm">
+      <input id="hLoc" placeholder="Location e.g. Nairobi">
+      <select id="hType"><option value="">All types</option><option>House</option><option>Apartment</option><option>Land</option><option>Commercial</option></select>
+      <select id="hMax"><option value="">Any price</option><option value="1000000">KSh 1M</option><option value="5000000">KSh 5M</option><option value="10000000">KSh 10M</option><option value="20000000">KSh 20M</option><option value="50000000">KSh 50M</option></select>
+      <button class="btn">Search</button>
+    </form>
+  </div>
+  <div class="stats">
+    <div><b>Buy</b><span>Homes &amp; apartments</span></div>
+    <div><b>Rent</b><span>Flexible options</span></div>
+    <div><b>Invest</b><span>Land &amp; commercial</span></div>
+  </div>
+</div></section>
+
+<section id="categories"><div class="container">
+  <div class="head"><h2>Browse by <em>Category</em></h2></div>
+  <div class="cats" id="cats"></div>
+</div></section>
+
+<section id="properties" style="padding-top:0"><div class="container">
+  <div class="head"><h2>Discover Our <em>Properties</em></h2></div>
+  <div class="toolbar">
+    <select id="fPurpose"><option value="">Buy &amp; Rent</option><option value="Sale">For Sale</option><option value="Rent">For Rent</option></select>
+    <select id="fType"><option value="">All Types</option><option>House</option><option>Apartment</option><option>Land</option><option>Commercial</option></select>
+    <select id="fBeds"><option value="0">Any Bedrooms</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
+    <select id="fSort"><option value="feat">Featured first</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="new">Newest first</option></select>
+    <button class="btn outline" id="reset">Reset</button>
+  </div>
+  <div class="line"><span id="count"></span><button class="link" id="favBtn">♥ My favourites (<span id="favN">0</span>)</button></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>No properties found. Try changing your search or filters.<br><br><button class="btn" id="emptyReset" type="button">Show all properties</button></div>
+  <div class="center"><button class="btn outline" id="more">View More Properties</button></div>
+</div></section>
+
+<section class="about" id="about"><div class="container">
+  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Modern home interior" loading="lazy">
+  <div>
+    <h2>More Than Property.<br><em>A Place to Belong.</em></h2>
+    <p>We make your search easier by helping you explore options that match your needs, plans and budget.</p>
+    <ul><li>Guidance at every step, including viewings</li><li>Homes, rentals, land and commercial in one place</li><li>A personal approach to your next step</li></ul>
+    <br><a href="#contact" class="btn" style="text-decoration:none;display:inline-block">Talk to Our Team</a>
+  </div>
+</div></section>
+
+<section id="team" class="team"><div class="container">
+  <div class="head"><h2>Meet Our <em>Team</em></h2></div>
+  <div class="teamgrid" id="teamGrid"></div>
+</div></section>
+
+<section id="reviews" class="reviews"><div class="container">
+  <div class="head"><h2>What Our <em>Clients Say</em></h2></div>
+  <div class="revgrid" id="revGrid"></div>
+</div></section>
+
+<section class="contact" id="contact"><div class="container">
+  <div>
+    <h2>How Can We <em>Help You?</em></h2>
+    <p>Tell us whether you want to buy, rent, sell or invest. Your enquiry opens in WhatsApp, ready to send.</p>
+    <div id="contactInfo" style="margin-top:14px"></div>
+  </div>
+  <form class="cf" id="cf">
+    <h3>Send an Enquiry</h3>
+    <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input name="name" placeholder="Full name" required maxlength="100">
+    <input name="phone" type="tel" placeholder="Phone e.g. 0712 345 678" required maxlength="25">
+    <input name="email" type="email" placeholder="Email (optional)" maxlength="120">
+    <select name="interest" required><option value="">I'm interested in…</option><option>Buying a property</option><option>Renting a property</option><option>Selling a property</option><option>Renting out a property</option><option>Land or investment</option></select>
+    <textarea name="msg" rows="3" placeholder="Your message" maxlength="500"></textarea>
+    <button class="btn">Send via WhatsApp</button>
+    <small style="color:var(--mut)">By sending, you agree to our <a href="#privacy" data-privacy>Privacy Policy</a>.</small>
+    <small id="cfMsg" role="status" style="color:var(--mut)"></small>
+  </form>
+</div></section>
+</main>
+<footer>© <span id="yr"></span> Senator Kondo Properties. All rights reserved. · <a href="#privacy" data-privacy>Privacy Policy</a></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mT" hidden>
+  <div class="mbox"><button class="mx" id="mX" aria-label="Close">✕</button><div id="mBody"></div></div>
+</div>
+
+<div class="cookie" id="cookie" role="region" aria-label="Privacy notice" hidden></div>
+
+<script src="config.js"></script>
+<script src="listings.js"></script>
+<script src="analytics.js"></script>
+<script src="script.js"></script>
+<script src="details.js"></script>
+<script src="extras.js"></script>
+</body>
+</html>
