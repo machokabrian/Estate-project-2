@@ -25,8 +25,8 @@ const CONFIG = {
 
   // --- Listings database (Supabase) – see SETUP.md ---
   // Your properties are stored in your own Supabase project and managed from /admin.html.
-  supabaseUrl: "",                           // e.g. "https://abcdefgh.supabase.co"
-  supabaseKey: "",                           // the public "anon" / "publishable" key (safe to publish)
+  supabaseUrl: "https://yiahqsgyullwjirpdobq.supabase.co",
+  supabaseKey: "sb_publishable_zh6qNRqkfwBgRw87lWVpww_tYjS2IqN",   // public key, safe to publish
   imageBucket: "listing-images",             // leave as is unless you renamed the bucket
 
   // --- AI chat assistant (optional) ---
