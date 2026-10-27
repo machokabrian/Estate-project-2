@@ -4,7 +4,7 @@
 // ============================================================
 const CONFIG = {
   name: "Lemways Nest Ltd",
-  siteUrl: "https://lemwaysnest.co.ke",   // your live domain
+  siteUrl: "https://estateproject2.vercel.app",   // your live domain
 
   // --- Contact details (shown in the Contact section) ---
   whatsapp: "254716635052",                  // main WhatsApp – international format, no + or spaces
@@ -41,7 +41,7 @@ const CONFIG = {
 
   // --- Analytics (leave empty to disable) ---
   analytics: {
-    plausibleDomain: "lemwaysnest.co.ke",
+    plausibleDomain: "https://estateproject2.vercel.app",
     ga4: "",
     metaPixel: ""
   }
