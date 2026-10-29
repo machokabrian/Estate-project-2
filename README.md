@@ -1,4 +1,4 @@
-# Senator Kondo Properties – website
+# Machoka Mwamba Properties – website
 
 ## Files to upload to GitHub / your host (all in the same folder)
 - `index.html`, `style.css` – page and design
